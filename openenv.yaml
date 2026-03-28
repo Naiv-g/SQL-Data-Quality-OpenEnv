@@ -1,0 +1,20 @@
+spec_version: 1
+name: sql_data_quality_env
+type: space
+runtime: fastapi
+app: server.app:app
+port: 7860
+description: >
+  An OpenEnv environment that challenges AI agents to audit SQL database tables
+  for data quality issues (nulls, duplicates, type errors, referential integrity)
+  and generate corrective SQL queries. Simulates real data-engineering workflows
+  with three tasks of increasing difficulty: easy (single-table null audit),
+  medium (cross-table duplicate & constraint analysis), hard (full schema
+  refactoring with multi-table joins and business-rule violations).
+tags:
+  - openenv
+  - data-engineering
+  - sql
+  - data-quality
+  - real-world
+author: Scaler OpenEnv
