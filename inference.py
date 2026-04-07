@@ -132,6 +132,9 @@ def run_task(
     verbose: bool = True,
 ) -> Dict[str, Any]:
     """Run a single task and return results."""
+    # Required structured output: task start
+    print(f"[START] task={task_id}", flush=True)
+
     if verbose:
         print(f"\n{'='*60}")
         print(f"  TASK: {task_id.upper()}")
@@ -197,6 +200,9 @@ def run_task(
         done = result.get("done", False)
         obs_text = obs.get("observation_text", "")
 
+        # Required structured output: each step
+        print(f"[STEP] step={step_count} reward={reward:.4f}", flush=True)
+
         if verbose:
             print(f"  < Env: {obs_text[:200]}  [reward={reward:.4f}, done={done}]")
 
@@ -243,6 +249,9 @@ def run_task(
                 final_score = data["final_score"]
         except Exception:
             pass
+
+    # Required structured output: task end
+    print(f"[END] task={task_id} score={final_score:.4f} steps={step_count}", flush=True)
 
     if verbose:
         print(f"\n  ✅ Task complete. final_score={final_score:.4f}, steps={step_count}")
