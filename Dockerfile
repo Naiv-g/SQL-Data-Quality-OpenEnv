@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM public.ecr.aws/docker/library/python:3.11-slim
 
 LABEL maintainer="Scaler OpenEnv"
 LABEL description="SQL Data Quality Environment — OpenEnv-compatible"
