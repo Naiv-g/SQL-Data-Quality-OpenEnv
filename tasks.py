@@ -120,7 +120,7 @@ def _easy_grader(conn: sqlite3.Connection) -> float:
     if invalid_count == 0:
         score += 0.25
 
-    return round(min(score, 1.0), 4)
+    return round(max(0.01, min(score, 0.99)), 4)
 
 
 # ---------------------------------------------------------------------------
@@ -218,7 +218,7 @@ def _medium_grader(conn: sqlite3.Connection) -> float:
     qty_score = 1.0 if bad_qty == 0 else max(0.0, 1.0 - bad_qty / 2.0)
     score += qty_score * 0.334
 
-    return round(min(score, 1.0), 4)
+    return round(max(0.01, min(score, 0.99)), 4)
 
 
 # ---------------------------------------------------------------------------
@@ -368,7 +368,7 @@ def _hard_grader(conn: sqlite3.Connection) -> float:
     if orphans == 0:
         score += per_issue
 
-    return round(min(score, 1.0), 4)
+    return round(max(0.01, min(score, 0.99)), 4)
 
 
 # ---------------------------------------------------------------------------
